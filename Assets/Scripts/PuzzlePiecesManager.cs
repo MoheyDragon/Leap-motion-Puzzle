@@ -1,23 +1,28 @@
 using UnityEngine;
 using System.Collections.Generic;
+
 public class PuzzlePiecesManager : MonoBehaviour
 {
-    [SerializeField] PuzzlePiece[] puzzlePiecePrefabs;
-
+    [SerializeField] private float detectingSlotsRadius = 0.5f;
+    [SerializeField] private PuzzlePiece[] puzzlePiecePrefabs;
     [Header("Grid Settings")]
-    [SerializeField] int rows = 3; 
-    [SerializeField] int columns = 3;
-    [SerializeField] float spacing = 1.0f;
-    [SerializeField] Vector2 xClamp, zClamp;
-    [SerializeField] bool shuffle;
-    [SerializeField] float randomOffset=.5f;
-    const float fixedY = 0.06f;
+    [SerializeField] private int rows = 3;
+    [SerializeField] private int columns = 3;
+    [SerializeField] private Vector2 xClamp, zClamp;
+    [SerializeField] private bool shuffle;
+    [SerializeField] private float randomOffset = 0.5f;
+
+    private const float fixedY = 0.06f;
+
     private void Start()
     {
-        if(shuffle)
-        puzzlePiecePrefabs = ShuffleArray(puzzlePiecePrefabs);
+        if (shuffle)
+        {
+            puzzlePiecePrefabs = ShuffleArray(puzzlePiecePrefabs);
+        }
         CreatePuzzlePieces();
     }
+
     private void CreatePuzzlePieces()
     {
         List<Vector3> positions = new List<Vector3>();
@@ -37,52 +42,48 @@ public class PuzzlePiecesManager : MonoBehaviour
                 float x = xClamp.x + i * xStep;
                 float z = zClamp.x + j * zStep;
 
-                // Add random offset within the cell
-                float randomX = 0;
-                float randomZ = 0;
-                if (shuffle)
-                {
-                    randomX = Random.Range(-randomOffset, randomOffset) * xStep;
-                    randomZ = Random.Range(-randomOffset, randomOffset) * zStep;
-                }
+                float randomX = shuffle ? Random.Range(-randomOffset, randomOffset) * xStep : 0;
+                float randomZ = shuffle ? Random.Range(-randomOffset, randomOffset) * zStep : 0;
+
                 Vector3 position = new Vector3(x + randomX, fixedY, z + randomZ);
                 positions.Add(position);
             }
         }
 
-        // Shuffle positions to add randomness
+        PuzzleManager.Singleton.SetPiecesCount(rows * columns);
 
-        // Place the puzzle pieces
-        for (int pieceIndex = 0; pieceIndex < puzzlePiecePrefabs.Length ; pieceIndex++)
+        for (int pieceIndex = 0; pieceIndex < puzzlePiecePrefabs.Length; pieceIndex++)
         {
             PuzzlePiece newPiece = Instantiate(puzzlePiecePrefabs[pieceIndex], transform);
-            newPiece.SetLocalPosition(positions[pieceIndex]);
+            newPiece.SetupPiece(positions[pieceIndex], detectingSlotsRadius);
         }
     }
+
     private void Update()
     {
         if (!shuffle) return;
-        if(Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             foreach (Transform child in transform)
             {
-                Destroy(child.gameObject); 
+                Destroy(child.gameObject);
             }
-            puzzlePiecePrefabs= ShuffleArray(puzzlePiecePrefabs);
+            puzzlePiecePrefabs = ShuffleArray(puzzlePiecePrefabs);
             CreatePuzzlePieces();
-
         }
     }
+
     private T[] ShuffleArray<T>(T[] array)
     {
-        T[] shuffeldArray = array;
+        T[] shuffledArray = array;
         for (int i = 0; i < array.Length; i++)
         {
-            T temp = shuffeldArray[i];
+            T temp = shuffledArray[i];
             int randomIndex = Random.Range(i, array.Length);
-            shuffeldArray[i] = shuffeldArray[randomIndex];
-            shuffeldArray[randomIndex] = temp;
+            shuffledArray[i] = shuffledArray[randomIndex];
+            shuffledArray[randomIndex] = temp;
         }
-        return shuffeldArray;
+        return shuffledArray;
     }
 }
