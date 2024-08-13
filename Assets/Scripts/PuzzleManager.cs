@@ -17,7 +17,17 @@ public class PuzzleManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+    public void Restart()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
 
+    public void SetPiecesCount(int count,int slotsCollidersIndex)
+    {
+        totalPiecesCount = count;
+        piecesInPlace = 0;
+        slotsColliders = targetBox.GetChild(slotsCollidersIndex).gameObject;
+    }
     public void EnableSlotColliders()
     {
         slotsColliders.SetActive(true);
@@ -28,23 +38,22 @@ public class PuzzleManager : MonoBehaviour
         slotsColliders.SetActive(false);
     }
 
-    public void SetPiecesCount(int count,int slotsCollidersIndex)
-    {
-        totalPiecesCount = count;
-        piecesInPlace = 0;
-        slotsColliders = targetBox.GetChild(slotsCollidersIndex).gameObject;
-    }
 
     public void CorrectPiecePutInPlace()
     {
         piecesInPlace++;
         correctPiecesCount.text = piecesInPlace.ToString();
         if (piecesInPlace == totalPiecesCount)
-            correctPiecesText.text = "Congrats you've won";
+            OnWin();
     }
 
     public void PieceRemovedFromCorrectPlace()
     {
         piecesInPlace--;
     }
+    private void OnWin()
+    {
+        correctPiecesText.text = "Congrats you've won";
+    }
+    
 }

@@ -55,9 +55,13 @@ PrefabInstance:
       propertyPath: puzzleTypeIndex
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 8364733444954772404, guid: 5bb5d0f5cd8998343a8c4d0a954ef968, type: 3}
+      propertyPath: m_Size.z
+      value: 0.01400001
+      objectReference: {fileID: 0}
     - target: {fileID: 8603048011157015425, guid: 5bb5d0f5cd8998343a8c4d0a954ef968, type: 3}
       propertyPath: m_Name
-      value: GGRG 2
+      value: GGRG 2 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bb5d0f5cd8998343a8c4d0a954ef968, type: 3}

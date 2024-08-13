@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5825180791091593884, guid: d6c0cbe737aa759489d3731fc82677f8, type: 3}
       propertyPath: m_Name
-      value: RGCR 1
+      value: RGCR 1 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6c0cbe737aa759489d3731fc82677f8, type: 3}

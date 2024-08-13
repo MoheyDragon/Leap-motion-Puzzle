@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2266131380144279989, guid: c2f58aecb869e7448956b54ed6b12c9b, type: 3}
       propertyPath: m_Name
-      value: GGCG
+      value: GGCG Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3478720102795168929, guid: c2f58aecb869e7448956b54ed6b12c9b, type: 3}
       propertyPath: m_RootOrder

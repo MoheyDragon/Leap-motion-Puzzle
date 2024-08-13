@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1456038490484837164, guid: 526b427f7a2cbd04d9890f5fc59fd43b, type: 3}
       propertyPath: m_Name
-      value: RGCR 2
+      value: RGCR 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3846288906985274999, guid: 526b427f7a2cbd04d9890f5fc59fd43b, type: 3}
       propertyPath: m_RootOrder

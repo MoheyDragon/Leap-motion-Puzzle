@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 578371517089685563, guid: 884aa61a5c6265449bd8509a64f89808, type: 3}
       propertyPath: m_Name
-      value: RGCG
+      value: RGCG Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1190101597860469129, guid: 884aa61a5c6265449bd8509a64f89808, type: 3}
       propertyPath: m_RootOrder

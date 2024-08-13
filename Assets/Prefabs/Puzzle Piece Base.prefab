@@ -96,7 +96,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.019875, y: 0.019875001, z: 0.0014000005}
+  m_Size: {x: 0.019875, y: 0.019875001, z: 0.01400001}
   m_Center: {x: 0.0000000055879354, y: -0.000000029791892, z: -0.0006999852}
 --- !u!54 &7725909012183153300
 Rigidbody:
@@ -157,4 +157,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3e2643e834bc5a47a8a0cb62beeb92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshFilter: {fileID: 3956750321542986183}
+  puzzleTypeIndex: 0

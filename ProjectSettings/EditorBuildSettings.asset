@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/PuzzleScene.unity
+    guid: 5ab2570ef0d174e4b98de2e0759bf4fd
   m_configObjects:
     com.unity.xr.magicleap.magic_leap_settings: {fileID: 11400000, guid: caae92150e831d54d930cf722c036b30, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 349e698e8d7e7824ab64e8d056ad7d40, type: 2}

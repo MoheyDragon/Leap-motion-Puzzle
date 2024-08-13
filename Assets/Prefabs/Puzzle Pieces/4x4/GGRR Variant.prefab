@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3078636321733150180, guid: 4efd5b4fddbea5f4db0f48a3881ce682, type: 3}
       propertyPath: m_Name
-      value: GGRR
+      value: GGRR Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5901276810433431845, guid: 4efd5b4fddbea5f4db0f48a3881ce682, type: 3}
       propertyPath: puzzleTypeIndex

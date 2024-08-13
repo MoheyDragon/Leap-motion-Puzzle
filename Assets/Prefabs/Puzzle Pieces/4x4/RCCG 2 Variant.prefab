@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7143710840742330079, guid: 981c142659682ee42a1fdcab05a31f8f, type: 3}
       propertyPath: m_Name
-      value: RCCG 2
+      value: RCCG 2 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 981c142659682ee42a1fdcab05a31f8f, type: 3}

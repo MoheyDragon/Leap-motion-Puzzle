@@ -16,13 +16,20 @@ public class PuzzlePiecesManager : MonoBehaviour
     [SerializeField] private float randomOffset = 0.5f;
 
     private const float fixedY = 0.06f;
-
-    private void Start()
+    [Space]
+    [SerializeField] GameObject difficultyCanvas;
+    [SerializeField] GameObject playButton;
+    public void SetGridSize(int gridSize)
     {
-        
+        puzzleSize = gridSize;
+        playButton.SetActive(true);
+    }
+    public void StartGame()
+    {
+        difficultyCanvas.SetActive(false);
+        playButton.SetActive(false);
         CreatePuzzlePieces();
     }
-
     private void CreatePuzzlePieces()
     {
         switch (puzzleSize)
@@ -47,9 +54,8 @@ public class PuzzlePiecesManager : MonoBehaviour
     private void CreatePuzzlePiecesBySize(PuzzlePiece[] puzzleSize)
     {
         if (shuffle)
-        {
             puzzleSize = ShuffleArray(puzzleSize);
-        }
+
         List<Vector3> positions = new List<Vector3>();
         int totalPieces = puzzleSize.Length;
         int totalGridCells = Mathf.CeilToInt(Mathf.Sqrt(totalPieces));

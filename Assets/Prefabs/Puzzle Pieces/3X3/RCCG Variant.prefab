@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 84812159305737595, guid: 752196f70fdc37e4eb3134e5fd149198, type: 3}
       propertyPath: m_Name
-      value: RCCG
+      value: RCCG Variant
       objectReference: {fileID: 0}
     - target: {fileID: 790648069110675423, guid: 752196f70fdc37e4eb3134e5fd149198, type: 3}
       propertyPath: m_RootOrder
