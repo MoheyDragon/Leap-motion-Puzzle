@@ -4,10 +4,13 @@ using System.Collections.Generic;
 public class PuzzlePiecesManager : MonoBehaviour
 {
     [SerializeField] private float detectingSlotsRadius = 0.5f;
-    [SerializeField] private PuzzlePiece[] puzzlePiecePrefabs;
+    [Range(3,5)]
+    [SerializeField] private int puzzleSize=5;
+    [SerializeField] private PuzzlePiece[] puzzlePices3;
+    [SerializeField] private PuzzlePiece[] puzzlePices4;
+    [SerializeField] private PuzzlePiece[] puzzlePieces5;
     [Header("Grid Settings")]
-    [SerializeField] private int rows = 3;
-    [SerializeField] private int columns = 3;
+    private int rows = 3;
     [SerializeField] private Vector2 xClamp, zClamp;
     [SerializeField] private bool shuffle;
     [SerializeField] private float randomOffset = 0.5f;
@@ -16,18 +19,39 @@ public class PuzzlePiecesManager : MonoBehaviour
 
     private void Start()
     {
-        if (shuffle)
-        {
-            puzzlePiecePrefabs = ShuffleArray(puzzlePiecePrefabs);
-        }
+        
         CreatePuzzlePieces();
     }
 
     private void CreatePuzzlePieces()
     {
+        switch (puzzleSize)
+        {
+            case 3:
+                rows = 3;
+                CreatePuzzlePiecesBySize(puzzlePices3);
+                break;
+            case 4:
+                rows = 4;
+                CreatePuzzlePiecesBySize(puzzlePices4);
+                break;
+            case 5:
+                rows = 5;
+                CreatePuzzlePiecesBySize(puzzlePieces5);
+                break;
+            default:
+                break;
+        }
+        
+    }
+    private void CreatePuzzlePiecesBySize(PuzzlePiece[] puzzleSize)
+    {
+        if (shuffle)
+        {
+            puzzleSize = ShuffleArray(puzzleSize);
+        }
         List<Vector3> positions = new List<Vector3>();
-
-        int totalPieces = puzzlePiecePrefabs.Length;
+        int totalPieces = puzzleSize.Length;
         int totalGridCells = Mathf.CeilToInt(Mathf.Sqrt(totalPieces));
 
         float xStep = (xClamp.y - xClamp.x) / totalGridCells;
@@ -50,11 +74,11 @@ public class PuzzlePiecesManager : MonoBehaviour
             }
         }
 
-        PuzzleManager.Singleton.SetPiecesCount(rows * columns);
+        PuzzleManager.Singleton.SetPiecesCount(rows * rows,rows-3);
 
-        for (int pieceIndex = 0; pieceIndex < puzzlePiecePrefabs.Length; pieceIndex++)
+        for (int pieceIndex = 0; pieceIndex < puzzleSize.Length; pieceIndex++)
         {
-            PuzzlePiece newPiece = Instantiate(puzzlePiecePrefabs[pieceIndex], transform);
+            PuzzlePiece newPiece = Instantiate(puzzleSize[pieceIndex], transform);
             newPiece.SetupPiece(positions[pieceIndex], detectingSlotsRadius);
         }
     }
@@ -69,7 +93,7 @@ public class PuzzlePiecesManager : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            puzzlePiecePrefabs = ShuffleArray(puzzlePiecePrefabs);
+            puzzlePieces5 = ShuffleArray(puzzlePieces5);
             CreatePuzzlePieces();
         }
     }

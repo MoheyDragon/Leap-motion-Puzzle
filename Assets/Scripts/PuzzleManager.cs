@@ -5,7 +5,8 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager Singleton;
     [SerializeField] TextMeshProUGUI correctPiecesCount;
     [SerializeField] TextMeshProUGUI correctPiecesText;
-    [SerializeField] private GameObject slotsColliders;
+    [SerializeField] private Transform targetBox;
+    private GameObject slotsColliders;
     private int piecesInPlace;
     private int totalPiecesCount;
 
@@ -27,10 +28,11 @@ public class PuzzleManager : MonoBehaviour
         slotsColliders.SetActive(false);
     }
 
-    public void SetPiecesCount(int count)
+    public void SetPiecesCount(int count,int slotsCollidersIndex)
     {
         totalPiecesCount = count;
         piecesInPlace = 0;
+        slotsColliders = targetBox.GetChild(slotsCollidersIndex).gameObject;
     }
 
     public void CorrectPiecePutInPlace()

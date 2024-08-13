@@ -4,13 +4,12 @@ using Leap.Unity.Interaction;
 public class PuzzlePiece : MonoBehaviour
 {
     [SerializeField] private int puzzleTypeIndex;
-    [SerializeField] private float detectingSlotsRadius = 0.5f;
+    private float detectingSlotsRadius = 0.5f;
     private InteractionBehaviour interactionBehaviour;
     private Slot currentSlot;
     private Vector3 returnToPosition;
     private Vector3 initialPosition;
     private Quaternion initialRotation;
-    bool IsInCorrectPlace; 
 
     private void Awake()
     {
@@ -95,7 +94,6 @@ public class PuzzlePiece : MonoBehaviour
     {
         if (isInCorrectPlace)
         {
-            IsInCorrectPlace = true;
             GetComponent<InteractionBehaviour>().enabled = false;
             PuzzleManager.Singleton.CorrectPiecePutInPlace();
         }
